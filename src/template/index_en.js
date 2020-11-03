@@ -13,6 +13,9 @@ import Newsletter from "../components/newsletter"
 import Nav from "../components/header/nav/Nav"
 import Lang from "../components/lang"
 
+import Button from "../components/button"
+
+import CreateHead from "../components/createHead/CreateHead"
 const Index = props => {
   let modules = props.pageContext.Modules.modules
   console.log(props)
