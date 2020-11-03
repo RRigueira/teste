@@ -12,16 +12,22 @@ const Slideshow = ({ data }) => {
   }
   return (
     <Slider {...settings}>
-      {data.sSlides.map(slide => {
-        let image = slide.image.localFile.childImageSharp.fluid
-        return (
-          <div key={image.src}>
-            <img src={image.src} srcSet={image.srcSet} />
-            <p>{slide.text}</p>
-            <p>{slide.title}</p>
-          </div>
-        )
-      })}
+      {data.sSlides
+        ? data.sSlides.map((slide, index) => {
+            let image = slide.image
+              ? slide.image.localFile.childImageSharp.fluid
+              : null
+            return (
+              <div key={index}>
+                {slide.image ? (
+                  <img src={image.src} srcSet={image.srcSet} />
+                ) : null}
+                <p>{slide.text}</p>
+                <p>{slide.title}</p>
+              </div>
+            )
+          })
+        : null}
     </Slider>
   )
 }

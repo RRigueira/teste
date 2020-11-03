@@ -14,24 +14,26 @@ import {
 import { Link, graphql } from "gatsby"
 
 const Nav = ({ data, lang }) => {
+  console.log(data[1])
+
   return (
     <Wrapper>
       <nav>
         <ul>
           {lang === "EN"
-            ? data[1].node.menuItems.nodes.map(item => {
-                let uri = item.connectedNode.node.uri
+            ? data[0].node.menuItems.nodes.map(item => {
                 return (
-                  <li key={uri}>
-                    <Link to={uri}>{item.label}</Link>
+                  <li key={item.url}>
+                    <Link to={item.url}>{item.label}</Link>
                   </li>
                 )
               })
-            : data[0].node.menuItems.nodes.map(item => {
-                let uri = item.connectedNode.node.uri
+            : data[1].node.menuItems.nodes.map(item => {
+                let ur = null
+                item.url === "/pt/" ? (ur = "/") : (ur = item.url)
                 return (
-                  <li key={uri}>
-                    <Link to={uri}>{item.label}</Link>
+                  <li key={ur}>
+                    <Link to={ur}>{item.label}</Link>
                   </li>
                 )
               })}

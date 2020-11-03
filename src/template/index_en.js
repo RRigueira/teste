@@ -77,6 +77,7 @@ export const query = graphql`
           menuItems {
             nodes {
               label
+              url
               connectedNode {
                 node {
                   ... on WpPage {
