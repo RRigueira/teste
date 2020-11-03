@@ -18,12 +18,21 @@ const Index = props => {
   console.log(props)
   return (
     <main>
-      <p>ingles</p>
       <Lang data={props.pageContext}></Lang>
       <Nav
         data={props.data.allWpMenu.edges}
         lang={props.pageContext.language.code}
       ></Nav>
+
+      <CreateHead
+        title={props.pageContext.seo.seoTitle}
+        description={props.pageContext.seo.seoDescription}
+        image={
+          props.pageContext.seo.seoImage
+            ? props.pageContext.seo.seoImage.localFile.childImageSharp.fixed.src
+            : null
+        }
+      ></CreateHead>
       {modules.map((module, index) => {
         switch (module.fieldGroupName) {
           case "page_Modules_Modules_Slideshow":
@@ -46,6 +55,8 @@ const Index = props => {
             return <Newsletter key={index}></Newsletter>
           case "page_Modules_Modules_GoogleMaps":
             return <Maps data={module} key={index}></Maps>
+          case "page_Modules_Modules_Button":
+            return <Button data={module} key={index}></Button>
         }
       })}
     </main>

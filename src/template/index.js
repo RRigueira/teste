@@ -30,7 +30,9 @@ const Index = props => {
         title={props.pageContext.seo.seoTitle}
         description={props.pageContext.seo.seoDescription}
         image={
-          props.pageContext.seo.seoImage.localFile.childImageSharp.fixed.src
+          props.pageContext.seo.seoImage
+            ? props.pageContext.seo.seoImage.localFile.childImageSharp.fixed.src
+            : null
         }
       ></CreateHead>
       {modules.map((module, index) => {
