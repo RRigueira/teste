@@ -1,11 +1,11 @@
 import React from "react"
 import { Global } from "@emotion/core"
-import { globalStyles } from "~theme/global"
+import { ChildrenWrapper } from "./Layout.styles"
 
 const Layout = ({ location, ...props }) => {
   return (
     <>
-      <Global styles={globalStyles} />
+      <Global styles={ChildrenWrapper}></Global>
       {props.children}
     </>
   )
